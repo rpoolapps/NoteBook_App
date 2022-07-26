@@ -1,4 +1,4 @@
-package com.ravisingh.androidnotebook.activity.fragment
+package com.ravisingh.androidnotebook.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,11 +8,10 @@ import android.view.ViewGroup
 import com.ravisingh.androidnotebook.R
 
 
-class EditFragment : Fragment() {
+class MainFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun onCreateView(
@@ -20,7 +19,7 @@ class EditFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_edit, container, false)
+        return inflater.inflate(R.layout.fragment_main, container, false)
     }
 
 }

@@ -1,4 +1,4 @@
-package com.ravisingh.androidnotebook.activity.fragment
+package com.ravisingh.androidnotebook.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

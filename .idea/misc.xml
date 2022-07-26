@@ -5,6 +5,9 @@
       <map>
         <entry key="app/src/main/res/layout/activity_container.xml" value="0.228125" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_add.xml" value="0.228125" />
+        <entry key="app/src/main/res/layout/fragment_edit.xml" value="0.228125" />
+        <entry key="app/src/main/res/layout/fragment_main.xml" value="0.228125" />
       </map>
     </option>
   </component>
