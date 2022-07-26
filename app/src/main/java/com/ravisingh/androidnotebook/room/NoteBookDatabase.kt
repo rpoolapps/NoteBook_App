@@ -15,4 +15,6 @@ abstract class NoteBookDatabase : RoomDatabase() {
         }
     }
 
+    abstract fun getNoteBookDao():NoteBookDao
+
 }
