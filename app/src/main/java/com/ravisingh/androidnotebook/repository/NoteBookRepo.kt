@@ -17,4 +17,5 @@ class NoteBookRepo  {
     suspend fun getAllNotebooks(context:Context):List<Notebook>{
         return NoteBookDatabase.get(context).getNoteBookDao().getAllNoteBook()
     }
+
 }

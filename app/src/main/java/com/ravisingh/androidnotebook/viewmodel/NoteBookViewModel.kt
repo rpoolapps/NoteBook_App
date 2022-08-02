@@ -27,9 +27,10 @@ class NoteBookViewModel : ViewModel() {
     }
 
 
-    fun getAllNotebooks(context: Context) {
+
+    fun getAllNotebooks(context: Context){
         viewModelScope.launch {
-            notebookList.value = repo.getAllNotebooks(context)
+            notebookList.value=  repo.getAllNotebooks(context)
         }
     }
 

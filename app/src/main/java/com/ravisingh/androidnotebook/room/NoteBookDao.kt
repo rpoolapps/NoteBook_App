@@ -1,15 +1,12 @@
 package com.ravisingh.androidnotebook.room
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 import com.ravisingh.androidnotebook.model.Notebook
 
 @Dao
 interface NoteBookDao {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(notebook: Notebook)
 
     @Delete
