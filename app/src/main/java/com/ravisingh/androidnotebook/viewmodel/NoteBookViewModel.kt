@@ -6,7 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ravisingh.androidnotebook.model.Notebook
 import com.ravisingh.androidnotebook.repository.NoteBookRepo
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class NoteBookViewModel : ViewModel() {
 
@@ -15,22 +17,28 @@ class NoteBookViewModel : ViewModel() {
 
     fun insert(context: Context, notebook: Notebook) {
         viewModelScope.launch {
-            repo.insert(context, notebook)
+            withContext(Dispatchers.IO) {
+                repo.insert(context, notebook)
+            }
         }
     }
 
     fun delete(context: Context, notebook: Notebook) {
         viewModelScope.launch {
-            repo.delete(context, notebook)
-            notebookList.value = repo.getAllNotebooks(context)  // Load data again
+            notebookList.value = withContext(Dispatchers.IO) {
+                repo.delete(context, notebook)
+                repo.getAllNotebooks(context)  // Load data again
+            }
+
         }
     }
 
 
-
-    fun getAllNotebooks(context: Context){
+    fun getAllNotebooks(context: Context) {
         viewModelScope.launch {
-            notebookList.value=  repo.getAllNotebooks(context)
+            notebookList.value = withContext(Dispatchers.IO) {
+                repo.getAllNotebooks(context)
+            }
         }
     }
 

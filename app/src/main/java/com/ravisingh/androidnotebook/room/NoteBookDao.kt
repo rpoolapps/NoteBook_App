@@ -7,11 +7,11 @@ import com.ravisingh.androidnotebook.model.Notebook
 interface NoteBookDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(notebook: Notebook)
+    fun insert(notebook: Notebook)
 
     @Delete
-    suspend fun delete(notebook: Notebook)
+    fun delete(notebook: Notebook)
 
     @Query("SELECT * FROM Notebook")
-    suspend fun getAllNoteBook(): List<Notebook>
+    fun getAllNoteBook(): List<Notebook>
 }
