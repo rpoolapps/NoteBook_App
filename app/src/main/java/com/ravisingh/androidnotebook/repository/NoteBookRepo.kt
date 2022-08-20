@@ -6,16 +6,15 @@ import com.ravisingh.androidnotebook.room.NoteBookDatabase
 
 class NoteBookRepo  {
 
-    suspend fun insert(context:Context,notebook: Notebook){
+    fun insert(context:Context,notebook: Notebook){
         NoteBookDatabase.get(context).getNoteBookDao().insert(notebook)
     }
 
-    suspend fun delete(context:Context,notebook: Notebook){
+     fun delete(context:Context,notebook: Notebook){
         NoteBookDatabase.get(context).getNoteBookDao().delete(notebook)
     }
 
-    suspend fun getAllNotebooks(context:Context):List<Notebook>{
-        return NoteBookDatabase.get(context).getNoteBookDao().getAllNoteBook()
-    }
+    fun getAllNotebooks(context:Context) = NoteBookDatabase.get(context).getNoteBookDao().getAllNoteBook()
+
 
 }

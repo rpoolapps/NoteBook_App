@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.core.os.bundleOf
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -23,7 +24,7 @@ class MainFragment : Fragment(), ClickHandler {
 
     lateinit var navController: NavController
     var adapter = MyAdapter(this)
-    lateinit var viewModel: NoteBookViewModel
+    val viewModel by activityViewModels<NoteBookViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +34,6 @@ class MainFragment : Fragment(), ClickHandler {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(this)[NoteBookViewModel::class.java]
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_main, container, false)
     }
@@ -49,19 +49,13 @@ class MainFragment : Fragment(), ClickHandler {
         val recycler = view.findViewById<RecyclerView>(R.id.recycler)
         context?.let { viewModel.getAllNotebooks(it) }
 
-        /*viewModel.notebookList.observe(viewLifecycleOwner) {
-            adapter.setContentList(it)
-            recycler.also { recycler ->
-                recycler.adapter = adapter
-            }
-        }*/
 
-        viewModel.notebookList.observe(viewLifecycleOwner, {
+        viewModel.notebookList.observe(viewLifecycleOwner) {
             adapter.setContentList(it)
             recycler.also { recycler ->
                 recycler.adapter = adapter
             }
-        })
+        }
 
     }
 
